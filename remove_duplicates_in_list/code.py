@@ -9,4 +9,7 @@ def remove_duplicates(input_list):
             tracker.add(item)
             output.append(item)
     return output 
-print(remove_duplicates(["b","c","c","a","c","b","a"]))
+print(remove_duplicates(["1", 1, "1", 2, 2, "2"]))
+print(remove_duplicates(["A", "a", "A", "a"]))
+print(remove_duplicates([1, 2, 2, 3, 1, 4]))
+print(remove_duplicates(["b", "c", "c", "a", "c", "b", "a"]))
