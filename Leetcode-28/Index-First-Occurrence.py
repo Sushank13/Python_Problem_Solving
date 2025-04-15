@@ -16,7 +16,7 @@ def haystack_needle(haystack,needle):
         return 0
     i=0
     flag=0
-    while(i<len(haystack)):
+    while(i<len(haystack)-len(needle)): # no need to iterate till full length of haystack 
         if haystack[i:i+len(needle)]==needle:
             flag=1
             break
