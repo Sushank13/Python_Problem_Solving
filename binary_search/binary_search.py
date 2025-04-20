@@ -14,7 +14,7 @@ def binary_search(input_list,target):
         elif target<input_list[middle]:#target is on the left side
             end=middle-1 
     return -1 # element does not exist
-print(binary_search([3,10,2,5,39,1],39))
-print(binary_search([3,10,2,5,39,1],10))
-print(binary_search([3,10,2,5,39,1],3))
-print(binary_search([3,10,2,5,39,1],4))
+print(binary_search([3,10,2,5,39,1],39)) # output: 5
+print(binary_search([3,10,2,5,39,1],10)) # output: 4
+print(binary_search([3,10,2,5,39,1],3)) # output: 2
+print(binary_search([3,10,2,5,39,1],4)) # output: -1
