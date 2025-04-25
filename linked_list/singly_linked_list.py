@@ -32,6 +32,56 @@ class LinkedList:
         node.next,self.head=self.head,node
         return f"{node.data} inserted at the front"
     
+    def add_at_index(self,node,index):
+        if not isinstance(node,Node):
+            raise TypeError("Only Node instances can be added")
+        if index==1: # edge case if insertion is at head
+            self.add_at_head(node)
+            return f"{node.data} added at index 1"
+        counter=1 #assuming index begins at 1
+        current_node=self.head
+        prev_node=self.head
+        while current_node:
+            if counter==index:
+                prev_node.next=node
+                node.next=current_node
+                return f"{node.data} added at index {index}"
+            else:
+                counter=counter+1
+                prev_node,current_node=current_node,current_node.next
+        return "Index Out of Range" # edge case where index> size of linked list
+    
+    def add_after_a_value(self,node,value):
+        if not isinstance(node,Node):
+            raise TypeError("Only Node instances can be added")
+        #no need of edge case to add at head as i am adding *after*
+        # a particular value
+        current_node=self.head
+        while current_node:
+            if current_node.data==value:
+                node.next=current_node.next
+                current_node.next=node
+                return f"Node {node.data} added after the value {value}"
+            current_node=current_node.next
+        return "Value Does not Exist in the Linked List"
+    
+    def add_at_value(self,node,value):
+        if not isinstance(node,Node):
+            raise TypeError("Only Node instances can be added")
+        if self.head.data==value: # edge case 
+            self.add_at_head(node)
+            return f"Node {node.data} added at the place of {value}"
+        current_node=self.head
+        prev_node=self.head
+        while current_node:
+            if current_node.data==value:
+                node.next=current_node
+                prev_node.next=node
+                return f"Node {node.data} added at the place of {value}"
+            prev_node=current_node
+            current_node=current_node.next
+        return "Value Does not Exist in the Linked List"
+        
     def delete_from_head(self):
         if self.is_empty():
             return None
@@ -108,6 +158,20 @@ node3=Node(20)
 print(my_linked_list.add_at_head(node3))
 my_linked_list.traverse()
 print(my_linked_list.find_node(10))
+node4=Node(15)
+print(my_linked_list.add_at_index(node4,3))
+my_linked_list.traverse()
+node5=Node(17)
+print(my_linked_list.add_at_index(node5,1))
+my_linked_list.traverse()
+node6=Node(27)
+print(my_linked_list.add_at_index(node6,7))
+node7=Node(12)
+print(my_linked_list.add_after_a_value(node7,17))
+my_linked_list.traverse()
+node8=Node(13)
+print(my_linked_list.add_after_a_value(node8,13))
+my_linked_list.traverse()
 print(my_linked_list.delete_node_by_value(3))
 my_linked_list.traverse()
 print(my_linked_list.delete_from_head())
