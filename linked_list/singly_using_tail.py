@@ -36,6 +36,16 @@ class LinkedList:
             print(current_node.data, end="->")
             current_node=current_node.next
         print("None")
+        
+    def traverse_in_reverse(self):
+        current_node=self.head
+        stack=[]
+        while current_node:
+            stack.append(current_node.data)
+            current_node=current_node.next
+        while stack:
+            print(stack.pop(),end="->")
+        print(None)
     
     def is_empty(self):
         return True if self.head is None else False
@@ -53,3 +63,4 @@ print(my_linked_list.add_at_end(node3))
 print(f"Tail:{my_linked_list.tail.data}")
 print(f"Head:{my_linked_list.head.data}")
 my_linked_list.traverse()
+my_linked_list.traverse_in_reverse()
