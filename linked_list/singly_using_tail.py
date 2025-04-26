@@ -47,6 +47,32 @@ class LinkedList:
             print(stack.pop(),end="->")
         print(None)
     
+    def reverse(self):
+        if self.is_empty():
+            return f"List is Empty"
+        #initialize three pointers
+        prev=None
+        current=self.head
+        next_address=None # to keep track of address in current node's next as it will be modified
+        while current:
+            next_address=current.next # track address of next node
+            current.next=prev # reverse links by changing the address in the current node to the address held in prev pointer
+            #move pointers forward
+            prev=current
+            current=next_address
+        self.head=prev
+        return "Linked List Reversed"
+    
+    def has_cycle_using_set(self): # using a set()
+        visited_nodes=set()
+        current_node=self.head
+        while current_node:
+            if current_node in visited_nodes:
+                return True
+            visited_nodes.add(current_node)
+            current_node=current_node.next
+        return False 
+    
     def is_empty(self):
         return True if self.head is None else False
     
@@ -63,4 +89,7 @@ print(my_linked_list.add_at_end(node3))
 print(f"Tail:{my_linked_list.tail.data}")
 print(f"Head:{my_linked_list.head.data}")
 my_linked_list.traverse()
-my_linked_list.traverse_in_reverse()
+#my_linked_list.traverse_in_reverse()
+print(my_linked_list.reverse())
+my_linked_list.traverse()
+print(my_linked_list.has_cycle_using_set())
