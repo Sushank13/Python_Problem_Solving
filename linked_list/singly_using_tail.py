@@ -73,6 +73,19 @@ class LinkedList:
             current_node=current_node.next
         return False 
     
+    def has_cycle_using_floyd(self):
+        if self.is_empty(): #list is empty, no cycle
+            return False 
+        slow=self.head
+        fast=self.head
+        while True:
+            if fast is None or fast.next is None: # fast pointer reache the end, so no cycle
+                return False
+            slow=slow.next
+            fast=fast.next.next
+            if slow == fast: # cycle exists
+                return True
+    
     def is_empty(self):
         return True if self.head is None else False
     
@@ -93,3 +106,4 @@ my_linked_list.traverse()
 print(my_linked_list.reverse())
 my_linked_list.traverse()
 print(my_linked_list.has_cycle_using_set())
+print(my_linked_list.has_cycle_using_floyd())
