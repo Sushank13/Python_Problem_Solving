@@ -21,25 +21,25 @@ node2.left=node4
 node2.right=node5
 
 #DFS:pre-order traversal using recursion
-def pre_order_traversal(node):
-    if node: # if node is not None
-        print(node.data,end=" ")
-        pre_order_traversal(node.left)
-        pre_order_traversal(node.right)
+def pre_order_traversal(root):
+    if root: # if tree is not empty
+        print(root.data,end=" ")
+        pre_order_traversal(root.left)
+        pre_order_traversal(root.right)
         
 #DFS:in-order using recursion
-def in_order_traversal(node):
-    if node:
-        in_order_traversal(node.left)
-        print(node.data,end=" ")
-        in_order_traversal(node.right)
+def in_order_traversal(root):
+    if root:
+        in_order_traversal(root.left)
+        print(root.data,end=" ")
+        in_order_traversal(root.right)
 
 #DFS:post-order using recursion
-def post_order_traversal(node):
-    if node:
-        post_order_traversal(node.left)
-        post_order_traversal(node.right)
-        print(node.data,end=" ")
+def post_order_traversal(root):
+    if root:
+        post_order_traversal(root.left)
+        post_order_traversal(root.right)
+        print(root.data,end=" ")
         
 # breadth first search traversal
 from collections import deque
@@ -48,7 +48,7 @@ def bfs(root):
         return None
     q=deque()
     q.append(root)
-    while q:
+    while q: #while queue is not empty
         current=q.popleft()
         print(current.data,end=" ")
         if current.left is not None:
