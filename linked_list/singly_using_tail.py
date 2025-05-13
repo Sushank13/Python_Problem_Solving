@@ -30,6 +30,46 @@ class LinkedList:
         node.next,self.head=self.head,node
         return f"Node {node.data} is added at front"
     
+    def del_from_front(self):
+        if self.head is None:
+            return "List is empty. Nothing to delete"
+        current=self.head
+        self.head,current.next=current.next,None
+        return f"{current.data} node deleted from front"
+    
+    def pop(self):
+        if self.head is None:
+            return "List is empty. Nothing to delete"
+        if self.head==self.tail: # only one element
+            self.head=None
+            self.tail=None
+            return f"Last Node Deleted (There was Only One Element)"
+        current=self.head
+        prev=None
+        while current:
+            if current==self.tail:
+                prev.next,self.tail=None,prev
+            prev,current=current,current.next
+            return f"Last node {current.data} deleted"
+        
+    def delete(self,value):
+        if self.head is None:
+            return "List is empty. Nothing to delete"
+        if self.head == self.tail: # only one element
+            if self.head.data==value:
+                self.head=None
+                self.tail=None
+                return f"Node {value} deleted"
+            else:
+                return f"Node {value} does not exist"
+        current=self.head
+        prev=None
+        while current:
+            if current.data==value:
+                prev.next,current.next=current.next,None
+                return f"Node {value} Deleted"
+            prev,current=current,current.next
+    
     def traverse(self):
         current_node=self.head
         while current_node:
